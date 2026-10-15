@@ -305,6 +305,31 @@ ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid
 .toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#26262c;border:1px solid var(--bd);padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:90;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:720px){.mn h1{font-size:22px}.ctr button{width:52px;height:52px}.savebar .b{padding:10px 12px}}
+
+/* ===== estúdio unificado ===== */
+.tabs2{display:flex;gap:6px;background:var(--p);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:0 0 14px;overflow-x:auto}
+.tabs2 button{flex:1;white-space:nowrap;background:0;border:0;color:var(--mu);font:600 14px Montserrat,sans-serif;padding:10px 14px;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs2 button.a{background:var(--r);color:#fff}
+.cnt{font-style:normal;background:var(--r);color:#fff;border-radius:99px;padding:0 7px;font-size:11px;font-weight:800}
+.tabs2 button.a .cnt{background:#fff;color:var(--r)}
+.cnt:empty{display:none}
+.est{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+.side{background:var(--p);border:1px solid var(--bd);border-radius:14px;padding:14px;position:sticky;top:12px;min-width:0}
+.side .cm{height:min(56vh,480px);max-height:none;margin-bottom:10px}
+.pane{display:none}
+.est[data-t=chat] .pane[data-p=chat],.est[data-t=ped] .pane[data-p=ped],.est[data-t=ouv] .pane[data-p=ouv]{display:block}
+.mo{display:none!important}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.tabs .b{margin:0}
+.tabs .b.a{background:var(--r);border-color:var(--r)}
+@media(min-width:901px){.est[data-t=ctl] .pane[data-p=chat]{display:block}#tabs2{width:380px;margin-left:auto;margin-bottom:10px}}
+@media(max-width:900px){
+.mo{display:flex!important}
+.est{display:block}
+.est[data-t=ctl] .side{display:none}
+.est:not([data-t=ctl]) .lft{display:none}
+.side{position:static}.side .cm{height:58dvh}
+}
+.stats div[data-go]{cursor:pointer}
 </style>
 </head>
 <body>
@@ -378,10 +403,7 @@ ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid
 <aside class="sb">
 <div class="logo" style="padding:6px 8px 14px"><span class="mk"><i class="fa-solid fa-microphone"></i></span><span class="bn"><b class="nm">Gazeta FM</b><small class="sb2">NACIONAL PLAYER</small></span></div>
 <button data-v="ini" class="a"><i class="fa-solid fa-house"></i>Início</button>
-<button data-v="est"><i class="fa-solid fa-sliders"></i>Estúdio</button>
-<button data-v="ouv"><i class="fa-solid fa-users"></i>Ouvintes</button>
-<button data-v="ped"><i class="fa-solid fa-music"></i>Pedidos<span id="bP" class="hide" style="margin-left:auto;background:var(--r);border-radius:99px;padding:0 8px;font-size:12px;color:#fff"></span></button>
-<button data-v="cht"><i class="fa-solid fa-comments"></i>Chat</button>
+<button data-v="est"><i class="fa-solid fa-sliders"></i>Estúdio<span id="bP" class="hide" style="margin-left:auto;background:var(--r);border-radius:99px;padding:0 8px;font-size:12px;color:#fff"></span></button>
 <button data-v="cfg"><i class="fa-solid fa-gear"></i>Configurações</button>
 <button id="sair" style="margin-top:auto"><i class="fa-solid fa-right-from-bracket"></i>Sair</button>
 </aside>
@@ -390,11 +412,13 @@ ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid
 
 <section data-s="ini"><h1>Bem-vindo, Locutor!</h1><p class="sub">Resumo da rádio em tempo real.</p><span class="bdg off" id="abadge">Offline</span>
 <div style="margin-top:14px"><button class="b r" data-go="estudio"><i class="fa-solid fa-sliders"></i> Ir para o estúdio</button><a class="b" id="ver2" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver site</a><button class="b" id="cpLink"><i class="fa-solid fa-link"></i> Copiar link do site</button></div>
-<div class="stats"><div><b id="sO">0</b><span>Ouvintes online</span></div><div><b id="sP">0</b><span>Pedidos pendentes</span></div><div><b id="sM">0</b><span>Mensagens</span></div></div>
+<div class="stats"><div data-go="ouvintes"><b id="sO">0</b><span>Ouvintes online</span></div><div data-go="pedidos"><b id="sP">0</b><span>Pedidos pendentes</span></div><div data-go="chat"><b id="sM">0</b><span>Mensagens</span></div></div>
 <div class="box"><h2>Últimos pedidos</h2><div id="ultP"></div></div></section>
 
 <section data-s="est" class="hide"><h1>Estúdio</h1><p class="sub">Controle a transmissão, o microfone e a programação musical.</p>
 <div class="onbar" id="onbar"><div class="ob-l"><span class="dot"></span><div><b id="obT">Fora do ar</b><small id="txT">00:00</small></div></div><small id="ouvc">Ouvintes recebendo áudio: 0</small></div>
+<div class="tabs2" id="tabs2"><button data-t="ctl" class="mo">Controles</button><button data-t="chat">Chat <i class="cnt" id="tbC"></i></button><button data-t="ped">Pedidos <i class="cnt" id="tbP"></i></button><button data-t="ouv">Ouvintes <i class="cnt" id="tbO"></i></button></div>
+<div class="est" id="est" data-t="chat"><div class="lft">
 <div class="g2">
 <div class="box"><h2>Transmissão</h2><label for="loc">Nome do locutor</label><input id="loc" placeholder="Seu nome no ar">
 <button class="b r bigb" id="tx"><i class="fa-solid fa-tower-broadcast"></i> Iniciar transmissão</button>
@@ -418,18 +442,15 @@ ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid
 <div class="box"><h2>Efeitos sonoros</h2><input type="file" id="fe" accept="audio/*" multiple class="hide"><div id="fx" class="fxg"></div>
 <label for="fxv">Volume dos efeitos</label><input id="fxv" type="range" min="0" max="1.5" step="0.05" value="1">
 <button class="b" id="addE"><i class="fa-solid fa-plus"></i> Adicionar efeito</button></div>
+</div><aside class="side">
+<div class="pane" data-p="chat"><div class="cm" id="cmA"></div><div style="display:flex;gap:8px"><input id="amsg" maxlength="200" placeholder="Responder como locutor" style="margin:0"><button class="b r" id="aenv" style="margin:0">Enviar</button></div></div>
+<div class="pane" data-p="ped"><div class="tabs"><button class="b a" data-pf="pendente">Pendentes</button><button class="b" data-pf="tocando">Em reprodução</button><button class="b" data-pf="finalizado">Finalizados</button></div><div id="pedL"></div></div>
+<div class="pane" data-p="ouv"><div id="ouvL"></div></div>
+</aside></div>
 </section>
-<section data-s="ouv" class="hide"><h1>Ouvintes da rádio</h1><div class="box" style="margin-top:14px"><div id="ouvL"></div></div></section>
-
-<section data-s="ped" class="hide"><h1>Pedir música</h1>
-<div class="tabs" style="margin-top:14px"><button class="b a" data-pf="pendente">Pendentes</button><button class="b" data-pf="tocando">Em reprodução</button><button class="b" data-pf="finalizado">Finalizados</button></div>
-<div class="box"><div id="pedL"></div></div></section>
-
-<section data-s="cht" class="hide"><h1>Chat da rádio</h1><div class="box" style="margin-top:14px"><div class="cm" id="cmA" style="max-height:420px"></div>
-<div style="display:flex;gap:8px"><input id="amsg" maxlength="200" placeholder="Responder como locutor" style="margin:0"><button class="b r" id="aenv" style="margin:0">Enviar</button></div></div></section>
-
 <section data-s="cfg" class="hide"><h1>Configurações</h1><p class="sub">As alterações aparecem no site para todos os ouvintes.</p>
-<div class="g2" style="margin-top:14px">
+<div class="tabs2" id="ctabs" style="margin-top:14px"><button data-ct="ger" class="a">Geral</button><button data-ct="con">Conteúdo</button><button data-ct="rad">Rádio offline</button></div>
+<div class="g2 cp" data-cp="ger">
 <div class="box"><h2>Identidade</h2><label for="cNome">Nome da rádio</label><input id="cNome"><label for="cSub">Subtítulo (embaixo do nome)</label><input id="cSub"><label for="cSlg">Slogan</label><input id="cSlg"></div>
 <div class="box"><h2>Discord</h2><label for="cDc">Link do servidor (convite)</label><input id="cDc" placeholder="https://discord.gg/...">
 <label for="cWh">Webhook de aviso (opcional)</label><input id="cWh" placeholder="https://discord.com/api/webhooks/..." autocomplete="off" autocapitalize="none">
@@ -437,10 +458,12 @@ ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid
 <button class="b" id="whTest" type="button"><i class="fa-brands fa-discord"></i> Enviar teste</button>
 <small class="hint">Ao entrar ao vivo, o Discord é avisado. Sem webhook, nada é enviado. O link fica guardado só para administradores.</small></div>
 </div>
-<div class="g2">
+<div class="g2 cp hide" data-cp="con">
 <div class="box"><h2>Programação</h2><textarea id="cProg"></textarea><small class="hint">Uma linha por programa. Ex.: 08h - Manhã Total</small></div>
 <div class="box"><h2>Equipe</h2><textarea id="cEq"></textarea><small class="hint">Uma pessoa por linha. Ex.: Nome | Cargo</small></div>
 <div class="box"><h2>Mais tocadas</h2><textarea id="cTop"></textarea><small class="hint">Uma música por linha. Ex.: Música - Artista</small></div>
+</div>
+<div class="g2 cp hide" data-cp="rad">
 <div class="box"><h2>Rádios do modo offline</h2><textarea id="cSt"></textarea><small class="hint">Links https, um por linha (link | nome). Todos os ouvintes escutam a mesma rádio ao mesmo tempo.</small><button class="b" id="cBusca" type="button" style="margin-top:8px">Buscar rádios brasileiras</button></div>
 </div>
 <div class="savebar"><span class="ok" id="sok"></span><a class="b" id="ver" target="_blank" rel="noopener">Ver site</a><button class="b r" id="salvar">Salvar alterações</button></div>
@@ -499,6 +522,7 @@ function renderChat(){
   const h=vals(chat).sort((a,b)=>a.ts-b.ts).map(m=>`<p><b>${esc(m.nome)}</b> ${esc(m.msg)}${user?` <button class="b" data-dm="${m.k}" style="padding:2px 8px;margin:0 0 0 6px" aria-label="Apagar">×</button>`:''}</p>`).join('')||empty('Nenhuma mensagem ainda.');
   for(const id of['#cmO','#cmA']){const e=$(id);if(!e)continue;const b=e.scrollTop+e.clientHeight>=e.scrollHeight-20;e.innerHTML=h;if(b)e.scrollTop=e.scrollHeight}
   cu($('#sM'),Object.keys(chat).length);
+  const nC=Object.keys(chat).length,eo=$('#est');if(eo){if(seenC<0||eo.dataset.t==='chat')seenC=nC;$('#tbC').textContent=Math.max(0,nC-seenC)||''}
 }
 $('#cmA').onclick=e=>{const b=e.target.closest('[data-dm]');if(b)R.child('chat/'+b.dataset.dm).remove()};
 
@@ -599,7 +623,7 @@ $('#ov').onclick=closeDr;$('#shx').onclick=()=>closeSh();
 $('#sh').onclick=e=>{if(e.target.id==='sh')closeSh()};
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeSh();closeDr()}});
 const SHR={pedir:'pedir',chat:'chat',programacao:'prog',equipe:'equipe'},SHA={pedir:'pedir',chat:'chat',prog:'programacao',equipe:'equipe'};
-const AV={ini:'',est:'estudio',ouv:'ouvintes',ped:'pedidos',cht:'chat',cfg:'config'},AVR={estudio:'est',ouvintes:'ouv',pedidos:'ped',chat:'cht',config:'cfg'};
+const AV={ini:'',est:'estudio',ouv:'ouvintes',ped:'pedidos',cht:'chat',cfg:'config'},AVR={estudio:'est',ouvintes:'est',pedidos:'est',chat:'est',config:'cfg'},TABR={chat:'chat',pedidos:'ped',ouvintes:'ouv'};
 const parseHash=()=>{const[a,b]=location.hash.replace(/^#\/?/,'').split('/');return{a:a||'',b:b||''}};
 let pushed=false;
 $$('[data-pn]').forEach(b=>b.onclick=()=>{pushed=true;location.hash='#'+SHA[b.dataset.pn]});
@@ -628,7 +652,7 @@ function nav(){
   $('#V-o').classList.toggle('hide',adm);
   $('#V-l').classList.toggle('hide',!(adm&&!user));
   $('#V-a').classList.toggle('hide',!(adm&&user));
-  if(adm&&user){if(!adminOn)startAdmin();showView(AVR[b]||'ini')}
+  if(adm&&user){if(!adminOn)startAdmin();showView(AVR[b]||'ini');if(TABR[b])setTab(TABR[b])}
   if(!adm&&SHR[a])openPn(SHR[a]);else closeSh(true);
   if(adm)closeDr();
 }
@@ -684,7 +708,13 @@ $$('[data-v]').forEach(b=>b.onclick=()=>{location.hash='#admin'+(AV[b.dataset.v]
 $$('[data-go]').forEach(b=>b.onclick=()=>location.hash='#admin/'+b.dataset.go);
 
 /* ---------- ADMIN: dados ---------- */
-let pf='pendente',prevP=null;
+let pf='pendente',prevP=null,seenC=-1;
+function setTab(t){
+  const e=$('#est');e.dataset.t=t;$$('#tabs2 button').forEach(b=>b.classList.toggle('a',b.dataset.t===t));
+  if(t==='chat'){seenC=Object.keys(chat).length;$('#tbC').textContent='';const m=$('#cmA');m.scrollTop=m.scrollHeight}
+}
+$$('#tabs2 button').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+$$('#ctabs button').forEach(b=>b.onclick=()=>{$$('#ctabs button').forEach(x=>x.classList.toggle('a',x===b));$$('.cp').forEach(p=>p.classList.toggle('hide',p.dataset.cp!==b.dataset.ct))});
 function beep(){try{const c=new AudioContext(),o=c.createOscillator(),g=c.createGain();o.frequency.value=880;g.gain.setValueAtTime(.15,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.4);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.4)}catch(e){}}
 function startAdmin(){
   adminOn=true;
@@ -696,12 +726,12 @@ function startAdmin(){
 }
 function cu(el,n){const f=+el.textContent||0,t0=performance.now();if(f===n){el.textContent=n;return}(function k(t){const p=Math.min(1,(t-t0)/500);el.textContent=Math.round(f+(n-f)*p);if(p<1)requestAnimationFrame(k)})(t0)}
 function renderOuv(){
-  const a=vals(ouv);cu($('#sO'),a.length);$('#nOuv').textContent=a.length?a.length+(a.length>1?' ouvindo agora':' ouvinte agora'):'';
+  const a=vals(ouv);cu($('#sO'),a.length);$('#tbO').textContent=a.length||'';$('#nOuv').textContent=a.length?a.length+(a.length>1?' ouvindo agora':' ouvinte agora'):'';
   $('#ouvL').innerHTML=a.map(o=>`<div class="li"><span>${esc(o.nome)}</span><small>${fmt(Date.now()-o.ts)} ouvindo</small></div>`).join('')+`<div class="li"><small>Total online: ${a.length}</small></div>`;
 }
 function renderPed(){
   const a=vals(ped).sort((x,y)=>y.ts-x.ts);
-  const np=a.filter(p=>p.status==='pendente').length;cu($('#sP'),np);$('#bP').textContent=np;$('#bP').classList.toggle('hide',!np);if(prevP!==null&&np>prevP)beep();prevP=np;
+  const np=a.filter(p=>p.status==='pendente').length;cu($('#sP'),np);$('#tbP').textContent=np||'';$('#bP').textContent=np;$('#bP').classList.toggle('hide',!np);if(prevP!==null&&np>prevP)beep();prevP=np;
   $('#ultP').innerHTML=a.slice(0,6).map(p=>`<div class="li"><span>${esc(p.musica)} <small>${esc(p.artista)}</small></span><small>${esc(p.nome)}</small></div>`).join('')||empty('Nenhum pedido ainda.');
   $('#pedL').innerHTML=a.filter(p=>p.status===pf).map(p=>`<div class="li"><span><b>${esc(p.musica)}</b> <small>${esc(p.artista)} · pedido por ${esc(p.nome)}</small></span><span>
   ${p.status==='pendente'?`<button class="b" style="margin:0" data-ps="${p.k}|tocando">Tocar</button>`:''}${p.status==='tocando'?`<button class="b" style="margin:0" data-ps="${p.k}|finalizado">Finalizar</button>`:''}<button class="b" style="margin:0" data-ps="${p.k}|del" aria-label="Excluir">×</button></span></div>`).join('')||empty('Nada por aqui.');
@@ -715,13 +745,14 @@ let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('sh
 async function sendWh(url,all,title,desc){const x=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:all?'@everyone':'',username:cfg.nome||'Gazeta FM',embeds:[{title,description:desc,color:0xe10613,timestamp:new Date().toISOString()}],allowed_mentions:{parse:all?['everyone']:[]}})});return x.ok}
 async function notifyLive(){const w=whCfg;if(!w||!w.url||!WH.test(w.url))return;try{await sendWh(w.url,w.all,'AO VIVO agora!','**'+($('#loc').value||'Locutor')+'** entrou ao vivo na '+(cfg.nome||'Gazeta FM')+' '+(cfg.sub||'Nacional Player')+'.\n\nOuça agora: '+siteUrl())}catch(e){}}
 $('#salvar').onclick=async()=>{
-  const wh=$('#cWh').value.trim();
+  const wh=$('#cWh').value.trim(),all=$('#cWhAll').checked,btn=$('#salvar');
   if(wh&&!WH.test(wh)){toast('Webhook inválido. Ele começa com https://discord.com/api/webhooks/');return}
-  try{
-    await R.child('config').set({nome:$('#cNome').value,sub:$('#cSub').value,slogan:$('#cSlg').value,discord:$('#cDc').value,prog:$('#cProg').value,equipe:$('#cEq').value,top:$('#cTop').value,streams:$('#cSt').value});
-    await db.ref('private/webhook').set({url:wh,all:$('#cWhAll').checked});
-    whCfg={url:wh,all:$('#cWhAll').checked};toast('Alterações salvas');
-  }catch(e){toast('Não foi possível salvar. Verifique as regras do Firebase.')}
+  btn.disabled=true;
+  try{await R.child('config').set({nome:$('#cNome').value,sub:$('#cSub').value,slogan:$('#cSlg').value,discord:$('#cDc').value,prog:$('#cProg').value,equipe:$('#cEq').value,top:$('#cTop').value,streams:$('#cSt').value})}
+  catch(e){btn.disabled=false;toast('Erro ao salvar ('+(e.code||e.message)+'). Confira as regras do Firebase.');return}
+  try{await db.ref('private/webhook').set({url:wh,all});whCfg={url:wh,all};toast('Alterações salvas')}
+  catch(e){toast('Configurações salvas, mas o webhook não ('+(e.code||e.message)+'). Atualize as regras do Firebase.')}
+  btn.disabled=false;
 };
 $('#whTest').onclick=async()=>{
   const wh=$('#cWh').value.trim();if(!WH.test(wh)){toast('Cole um webhook válido primeiro');return}
@@ -835,6 +866,7 @@ addEventListener('beforeunload',()=>{if(peer)R.child('status').set({online:false
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 $$('.ct,.g2>.box,.stats>div').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)});
 $('#yr').textContent=new Date().getFullYear();
+setTab(matchMedia('(max-width:900px)').matches?'ctl':'chat');
 renderPl();renderFx();nav();
 </script>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
