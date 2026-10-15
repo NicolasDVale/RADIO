@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gazeta FM Nacional Player</title>
 <meta name="theme-color" content="#09090b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e10613'/%3E%3C/svg%3E">
@@ -242,6 +242,69 @@ input,textarea,select{font-size:16px}
 .box{padding:18px}
 .tk{padding:12px 16px}.ft{padding:18px 16px}
 }
+
+/* ===== interface refinada ===== */
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+button,.ct,.drawer a,.dk a,.sb button,.top,.hero,.tk,.ft,.ib{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.cm p,input,textarea{-webkit-user-select:text;user-select:text}
+button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}
+input:focus,textarea:focus{border-color:var(--r2);outline:none;box-shadow:0 0 0 3px #e1061333}
+@media(hover:none){
+.ct:hover,.stats div:hover{transform:none;box-shadow:none}
+.ct:hover{border-color:var(--bd)}.ct.red:hover{border-color:var(--r)}
+.ct:hover i{transform:none}
+.box:hover{border-color:var(--bd)}
+.b:hover{border-color:var(--bd)}.b.r:hover{background:var(--r);border-color:var(--r)}
+.pb:hover,.pcard .pb:hover{transform:none}.pcard .pb:hover{background:var(--r)}
+.sb button:hover:not(.a){transform:none;background:0;color:var(--mu)}
+.drawer a:hover,.drawer button:hover,.dk a:hover,.dk button:hover{background:0}
+.dk a:hover,.dk button:hover{color:var(--mu)}
+}
+.top{padding-top:calc(10px + env(safe-area-inset-top))}
+.sh-in{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.ft{padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+a.b{text-decoration:none;display:inline-block}
+.cm p{background:var(--p2);border:0;border-radius:12px;padding:9px 12px;margin:0 0 8px}
+ol.t li::before{content:counter(n);width:24px;height:24px;flex:none;display:grid;place-items:center;border-radius:50%;background:#e1061326;color:var(--r2);font-size:12px;font-weight:800}
+.pe{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--bd)}
+.pe:first-child,.pg:first-child{border-top:0}
+.av{width:40px;height:40px;border-radius:50%;background:var(--r);display:grid;place-items:center;font-weight:800;flex:none}
+.pe b{display:block;font-size:15px}.pe small{color:var(--mu)}
+.pg{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--bd);font-size:15px}
+.hr{background:#e1061326;color:#ff8a93;border-radius:8px;padding:4px 10px;font-weight:700;font-size:13px;min-width:56px;text-align:center}
+.sub{color:var(--mu);font-size:14px;margin:0 0 12px}
+.hint{display:block;color:var(--mu);font-size:12px;margin-top:6px}
+.ck{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--tx);margin:10px 0;font-weight:500}
+.ck input{width:auto!important;margin:0;accent-color:var(--r2)}
+.mn{max-width:1120px;width:100%}
+.mn h1{font-size:26px}
+.sb{background:#101013}
+.sb button{border-radius:10px}.sb button.a{box-shadow:0 8px 20px #e106134d}
+.stats div{border-radius:14px;padding:18px}
+.onbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border:1px solid var(--bd);border-radius:14px;background:var(--p);margin:14px 0 16px}
+.onbar.on{border-color:#e1061388;background:#1f0a0d}
+.ob-l{display:flex;align-items:center;gap:14px}
+.dot{width:12px;height:12px;border-radius:50%;background:#55555f;flex:none}
+.onbar.on .dot{background:var(--r2);box-shadow:0 0 12px var(--r2);animation:blink 1.1s infinite}
+.onbar b{display:block;font-size:16px}.onbar small{color:var(--mu);font:13px 'Share Tech Mono',monospace}
+.bigb{display:block;width:100%;padding:14px;font-size:15px;margin:0 0 10px}
+.micb{padding:18px;font-size:16px}
+.meter{height:8px;background:var(--bd);border-radius:4px;margin:4px 0 14px;overflow:hidden}
+.meter div{height:100%;width:0;background:var(--ok);border-radius:4px;transition:width .08s}
+.np2{margin-bottom:10px}.np2 small{color:var(--r2);font-weight:700;font-size:11px;letter-spacing:.14em}.np2 b{display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prg{display:flex;align-items:center;gap:10px;font:12px 'Share Tech Mono',monospace;color:var(--mu)}
+.prg input{margin:0;flex:1;accent-color:var(--r2)}
+.ctr{display:flex;gap:14px;justify-content:center;align-items:center;margin:12px 0 6px}
+.ctr button{width:48px;height:48px;border-radius:50%;border:1px solid var(--bd);background:var(--p2);color:var(--tx);font-size:16px}
+.ctr #pp{width:62px;height:62px;background:var(--r);border:0;font-size:21px}
+.fxg{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:10px}
+.fxg .b{margin:0;padding:14px 8px;text-align:center}
+.savebar{position:sticky;bottom:0;display:flex;gap:10px;justify-content:flex-end;align-items:center;padding:14px 0;background:linear-gradient(0deg,var(--bg) 65%,transparent);margin-top:8px}
+.savebar .b{margin:0}.savebar .ok{margin-right:auto}
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#26262c;border:1px solid var(--bd);padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:90;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:720px){.mn h1{font-size:22px}.ctr button{width:52px;height:52px}.savebar .b{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -325,34 +388,37 @@ input,textarea,select{font-size:16px}
 <div class="mn">
 <div class="atop"><button class="ib" id="ab" aria-label="Menu"><i class="fa-solid fa-bars"></i></button><span class="nm">Gazeta FM</span></div>
 
-<section data-s="ini"><h1>Bem-vindo, Locutor!</h1><span class="bdg off" id="abadge">Offline</span>
+<section data-s="ini"><h1>Bem-vindo, Locutor!</h1><p class="sub">Resumo da rádio em tempo real.</p><span class="bdg off" id="abadge">Offline</span>
+<div style="margin-top:14px"><button class="b r" data-go="estudio"><i class="fa-solid fa-sliders"></i> Ir para o estúdio</button><a class="b" id="ver2" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver site</a><button class="b" id="cpLink"><i class="fa-solid fa-link"></i> Copiar link do site</button></div>
 <div class="stats"><div><b id="sO">0</b><span>Ouvintes online</span></div><div><b id="sP">0</b><span>Pedidos pendentes</span></div><div><b id="sM">0</b><span>Mensagens</span></div></div>
 <div class="box"><h2>Últimos pedidos</h2><div id="ultP"></div></div></section>
 
-<section data-s="est" class="hide"><h1>Estúdio</h1>
-<div class="g2" style="margin-top:14px">
-<div class="box"><h2>Transmissão</h2>
-<label for="loc">Nome do locutor</label><input id="loc" placeholder="Seu nome no ar">
-<button class="b r" id="tx"><i class="fa-solid fa-tower-broadcast"></i> Iniciar transmissão</button>
-<button class="b hide" id="txStop"><i class="fa-solid fa-stop"></i> Fechar transmissão</button><br>
-<button class="b" id="mic"><i class="fa-solid fa-microphone-slash"></i> Abrir microfone</button>
-<div style="height:8px;background:var(--bd);border-radius:4px;margin:6px 0 12px" title="Nível do microfone"><div id="lvl" style="height:8px;width:0;background:var(--ok);border-radius:4px"></div></div>
-<label for="mgain">Sensibilidade do microfone: <span id="mgv">180</span>%</label><input id="mgain" type="range" min="0.5" max="4" step="0.1" value="1.8">
-<small style="color:var(--mu);display:block;margin-bottom:8px">Use fones de ouvido para evitar eco.</small>
-<label style="display:block"><input type="checkbox" id="duck" checked style="width:auto;margin:0 6px 0 0"> Abaixar a música quando o microfone abrir</label>
-<small id="ouvc" style="color:var(--mu)">Ouvintes recebendo áudio: 0</small></div>
-<div class="box"><h2>Músicas e transição</h2>
-<input type="file" id="fm" accept="audio/*" multiple class="hide">
-<button class="b" id="addM"><i class="fa-solid fa-plus"></i> Adicionar músicas</button>
-<div id="plist"></div>
-<label for="fade">Duração da transição: <span id="fadeV">4</span>s</label><input id="fade" type="range" min="1" max="12" value="4">
-<label style="display:block"><input type="checkbox" id="auto" checked style="width:auto;margin:0 6px 0 0"> Passar para a próxima automaticamente</label>
-<button class="b" id="next"><i class="fa-solid fa-shuffle"></i> Transição para a próxima</button>
-<label for="mvol">Volume da música</label><input id="mvol" type="range" min="0" max="1" step="0.05" value="1"></div>
-<div class="box"><h2>Efeitos</h2><input type="file" id="fe" accept="audio/*" multiple class="hide"><div id="fx"></div>
+<section data-s="est" class="hide"><h1>Estúdio</h1><p class="sub">Controle a transmissão, o microfone e a programação musical.</p>
+<div class="onbar" id="onbar"><div class="ob-l"><span class="dot"></span><div><b id="obT">Fora do ar</b><small id="txT">00:00</small></div></div><small id="ouvc">Ouvintes recebendo áudio: 0</small></div>
+<div class="g2">
+<div class="box"><h2>Transmissão</h2><label for="loc">Nome do locutor</label><input id="loc" placeholder="Seu nome no ar">
+<button class="b r bigb" id="tx"><i class="fa-solid fa-tower-broadcast"></i> Iniciar transmissão</button>
+<button class="b bigb hide" id="txStop"><i class="fa-solid fa-stop"></i> Fechar transmissão</button>
+<small class="hint">Mantenha esta aba aberta durante a transmissão. Se houver webhook configurado, o Discord é avisado ao entrar ao vivo.</small></div>
+<div class="box"><h2>Microfone</h2><button class="b bigb micb" id="mic"><i class="fa-solid fa-microphone-slash"></i> Abrir microfone</button>
+<div class="meter"><div id="lvl"></div></div>
+<label for="mgain">Sensibilidade: <span id="mgv">180</span>%</label><input id="mgain" type="range" min="0.5" max="4" step="0.1" value="1.8">
+<label class="ck"><input type="checkbox" id="duck" checked> Abaixar a música quando o microfone abrir</label>
+<small class="hint">Use fones de ouvido para evitar eco.</small></div>
+</div>
+<div class="box"><h2>Player de músicas</h2><input type="file" id="fm" accept="audio/*" multiple class="hide">
+<div class="np2"><small>TOCANDO</small><b id="nowT">Nenhuma música</b></div>
+<div class="prg"><span id="tcur">0:00</span><input id="pbar" type="range" min="0" max="1000" value="0" aria-label="Posição"><span id="tdur">0:00</span></div>
+<div class="ctr"><button id="prev" aria-label="Anterior"><i class="fa-solid fa-backward-step"></i></button><button id="pp" aria-label="Tocar ou pausar"><i class="fa-solid fa-play"></i></button><button id="next" aria-label="Próxima"><i class="fa-solid fa-forward-step"></i></button></div>
+<label class="ck"><input type="checkbox" id="auto" checked> Passar para a próxima automaticamente</label>
+<label class="ck"><input type="checkbox" id="shuf"> Ordem aleatória</label>
+<label for="fade">Transição entre músicas: <span id="fadeV">4</span>s</label><input id="fade" type="range" min="1" max="12" value="4">
+<label for="mvol">Volume da música</label><input id="mvol" type="range" min="0" max="1" step="0.05" value="1">
+<button class="b" id="addM"><i class="fa-solid fa-plus"></i> Adicionar músicas</button><div id="plist"></div></div>
+<div class="box"><h2>Efeitos sonoros</h2><input type="file" id="fe" accept="audio/*" multiple class="hide"><div id="fx" class="fxg"></div>
+<label for="fxv">Volume dos efeitos</label><input id="fxv" type="range" min="0" max="1.5" step="0.05" value="1">
 <button class="b" id="addE"><i class="fa-solid fa-plus"></i> Adicionar efeito</button></div>
-</div></section>
-
+</section>
 <section data-s="ouv" class="hide"><h1>Ouvintes da rádio</h1><div class="box" style="margin-top:14px"><div id="ouvL"></div></div></section>
 
 <section data-s="ped" class="hide"><h1>Pedir música</h1>
@@ -362,16 +428,23 @@ input,textarea,select{font-size:16px}
 <section data-s="cht" class="hide"><h1>Chat da rádio</h1><div class="box" style="margin-top:14px"><div class="cm" id="cmA" style="max-height:420px"></div>
 <div style="display:flex;gap:8px"><input id="amsg" maxlength="200" placeholder="Responder como locutor" style="margin:0"><button class="b r" id="aenv" style="margin:0">Enviar</button></div></div></section>
 
-<section data-s="cfg" class="hide"><h1>Configurações</h1><div class="box" style="margin-top:14px">
-<label for="cNome">Nome da rádio</label><input id="cNome">
-<label for="cSub">Subtítulo (embaixo do nome)</label><input id="cSub">
-<label for="cSlg">Slogan</label><input id="cSlg">
-<label for="cDc">Link do Discord</label><input id="cDc" placeholder="https://discord.gg/...">
-<label for="cProg">Programação (uma linha por programa, ex.: 08h - Manhã Total)</label><textarea id="cProg"></textarea>
-<label for="cEq">Equipe (Nome | Cargo, uma por linha)</label><textarea id="cEq"></textarea>
-<label for="cTop">Mais tocadas (uma por linha)</label><textarea id="cTop"></textarea>
-<label for="cSt">Rádios do modo offline (https, uma por linha: link | nome). Todos os ouvintes escutam a mesma rádio ao mesmo tempo</label><textarea id="cSt"></textarea>
-<button class="b" id="cBusca" type="button">Buscar rádios brasileiras</button> <button class="b r" id="salvar">Salvar alterações</button><span class="ok" id="sok"></span></div></section>
+<section data-s="cfg" class="hide"><h1>Configurações</h1><p class="sub">As alterações aparecem no site para todos os ouvintes.</p>
+<div class="g2" style="margin-top:14px">
+<div class="box"><h2>Identidade</h2><label for="cNome">Nome da rádio</label><input id="cNome"><label for="cSub">Subtítulo (embaixo do nome)</label><input id="cSub"><label for="cSlg">Slogan</label><input id="cSlg"></div>
+<div class="box"><h2>Discord</h2><label for="cDc">Link do servidor (convite)</label><input id="cDc" placeholder="https://discord.gg/...">
+<label for="cWh">Webhook de aviso (opcional)</label><input id="cWh" placeholder="https://discord.com/api/webhooks/..." autocomplete="off" autocapitalize="none">
+<label class="ck"><input type="checkbox" id="cWhAll"> Marcar @everyone no aviso</label>
+<button class="b" id="whTest" type="button"><i class="fa-brands fa-discord"></i> Enviar teste</button>
+<small class="hint">Ao entrar ao vivo, o Discord é avisado. Sem webhook, nada é enviado. O link fica guardado só para administradores.</small></div>
+</div>
+<div class="g2">
+<div class="box"><h2>Programação</h2><textarea id="cProg"></textarea><small class="hint">Uma linha por programa. Ex.: 08h - Manhã Total</small></div>
+<div class="box"><h2>Equipe</h2><textarea id="cEq"></textarea><small class="hint">Uma pessoa por linha. Ex.: Nome | Cargo</small></div>
+<div class="box"><h2>Mais tocadas</h2><textarea id="cTop"></textarea><small class="hint">Uma música por linha. Ex.: Música - Artista</small></div>
+<div class="box"><h2>Rádios do modo offline</h2><textarea id="cSt"></textarea><small class="hint">Links https, um por linha (link | nome). Todos os ouvintes escutam a mesma rádio ao mesmo tempo.</small><button class="b" id="cBusca" type="button" style="margin-top:8px">Buscar rádios brasileiras</button></div>
+</div>
+<div class="savebar"><span class="ok" id="sok"></span><a class="b" id="ver" target="_blank" rel="noopener">Ver site</a><button class="b r" id="salvar">Salvar alterações</button></div>
+</section>
 </div></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -410,13 +483,14 @@ function renderCfg(){
   $$('.nm').forEach(e=>e.textContent=cfg.nome||'Gazeta FM');const sub=cfg.sub||'Nacional Player';$$('.sb2').forEach(e=>e.textContent=sub.toUpperCase());document.title=(cfg.nome||'Gazeta FM')+' '+sub;
   $('#slg').textContent=cfg.slogan||'A sua rádio, em todo lugar!';
   $$('.dcl').forEach(d=>{if(cfg.discord){d.href=cfg.discord;d.classList.remove('hide')}else d.classList.add('hide')});fbList=[];
-  $('#eqL').innerHTML=lines(cfg.equipe).map(l=>{const[n,c]=l.split('|').map(x=>x.trim());return`<div class="li"><b>${esc(n)}</b><small>${esc(c||'')}</small></div>`}).join('')||empty('Em breve.');
-  $('#progL').innerHTML=lines(cfg.prog).map(l=>`<div class="li">${esc(l)}</div>`).join('')||empty('Em breve.');
+  $('#eqL').innerHTML=lines(cfg.equipe).map(l=>{const[n,c]=l.split('|').map(x=>x.trim());return`<div class="pe"><span class="av">${esc((n||'?')[0].toUpperCase())}</span><div><b>${esc(n)}</b><small>${esc(c||'')}</small></div></div>`}).join('')||empty('Em breve.');
+  $('#progL').innerHTML=lines(cfg.prog).map(l=>{const m=l.match(/^(.{1,14}?)\s+[-–]\s+(.+)$/);return m?`<div class="pg"><span class="hr">${esc(m[1])}</span><span>${esc(m[2])}</span></div>`:`<div class="pg"><span>${esc(l)}</span></div>`}).join('')||empty('Em breve.');
   $('#top').innerHTML=lines(cfg.top).map(l=>`<li>${esc(l)}</li>`).join('')||'<li>Em breve.</li>';
 }
 function renderStatus(){
   const on=!!st.online;
   for(const id of['#badge','#abadge']){const b=$(id);b.className='bdg '+(on?'on':'off');b.textContent=on?'Ao vivo':'Offline'}
+  const ob=$('#onbar');if(ob){ob.classList.toggle('on',on);$('#obT').textContent=on?'No ar: '+(st.locutor||'Locutor'):'Fora do ar'}
   $('#aovivo').textContent=on?'AO VIVO':'PROGRAMAÇÃO MUSICAL';$('#onair').classList.toggle('lit',on||want);$('#onair span').textContent=on?'AO VIVO':(want?'AUTOMÁTICO':'FORA DO AR');
   if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:(cfg.nome||'Gazeta FM')+' Nacional Player',artist:on?'Ao vivo: '+(st.locutor||'No ar'):'Programação musical'});
   $('#npT').textContent=on?('Locutor: '+(st.locutor||'No ar')):(want?('Tocando: '+(fbName||'rádios reais')):'Toque em play para ouvir');
@@ -509,7 +583,11 @@ const bars=[...eqEl.children],lv=bars.map(()=>.08);let fd=null;
 const SH={pedir:'Pedir música',chat:'Chat da rádio',prog:'Programação',equipe:'Equipe'};
 function openDr(){$('#dr').classList.add('open');$('#ov').classList.remove('hide');$('#hb').setAttribute('aria-expanded','true')}
 function closeDr(){$('#dr').classList.remove('open');$('#ov').classList.add('hide');$('#hb').setAttribute('aria-expanded','false')}
-function closeSh(){$('#sh').classList.add('hide');document.body.classList.remove('lock')}
+function closeSh(silent){
+  $('#sh').classList.add('hide');document.body.classList.remove('lock');
+  if(silent)return;
+  if(SHR[parseHash().a]){if(pushed){pushed=false;history.back()}else history.replaceState(null,'',location.pathname+location.search)}
+}
 function openPn(k){
   closeDr();
   Object.keys(SH).forEach(x=>$('#p-'+x).classList.toggle('hide',x!==k));
@@ -517,10 +595,14 @@ function openPn(k){
   if(k==='chat'){const e=$('#cmO');e.scrollTop=e.scrollHeight}
 }
 $('#hb').onclick=()=>$('#dr').classList.contains('open')?closeDr():openDr();
-$('#ov').onclick=closeDr;$('#shx').onclick=closeSh;
+$('#ov').onclick=closeDr;$('#shx').onclick=()=>closeSh();
 $('#sh').onclick=e=>{if(e.target.id==='sh')closeSh()};
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeSh();closeDr()}});
-$$('[data-pn]').forEach(b=>b.onclick=()=>openPn(b.dataset.pn));
+const SHR={pedir:'pedir',chat:'chat',programacao:'prog',equipe:'equipe'},SHA={pedir:'pedir',chat:'chat',prog:'programacao',equipe:'equipe'};
+const AV={ini:'',est:'estudio',ouv:'ouvintes',ped:'pedidos',cht:'chat',cfg:'config'},AVR={estudio:'est',ouvintes:'ouv',pedidos:'ped',chat:'cht',config:'cfg'};
+const parseHash=()=>{const[a,b]=location.hash.replace(/^#\/?/,'').split('/');return{a:a||'',b:b||''}};
+let pushed=false;
+$$('[data-pn]').forEach(b=>b.onclick=()=>{pushed=true;location.hash='#'+SHA[b.dataset.pn]});
 $$('#dr a').forEach(a=>a.addEventListener('click',closeDr));
 $('#pedir').onclick=async()=>{
   const m=$('#pm').value.trim();if(!m){$('#pok').textContent='Digite o nome da música.';return}
@@ -540,12 +622,15 @@ $('#amsg').onkeydown=e=>{if(e.key==='Enter')$('#aenv').click()};
 
 /* ---------- navegação e login ---------- */
 let adminOn=false;
+function showView(v){$$('[data-v]').forEach(x=>x.classList.toggle('a',x.dataset.v===v));$$('[data-s]').forEach(x=>x.classList.toggle('hide',x.dataset.s!==v));$('.sb').classList.remove('open')}
 function nav(){
-  const h=location.hash==='#admin';
-  $('#V-o').classList.toggle('hide',h);
-  $('#V-l').classList.toggle('hide',!(h&&!user));
-  $('#V-a').classList.toggle('hide',!(h&&user));
-  if(h&&user&&!adminOn)startAdmin();
+  const{a,b}=parseHash(),adm=a==='admin';
+  $('#V-o').classList.toggle('hide',adm);
+  $('#V-l').classList.toggle('hide',!(adm&&!user));
+  $('#V-a').classList.toggle('hide',!(adm&&user));
+  if(adm&&user){if(!adminOn)startAdmin();showView(AVR[b]||'ini')}
+  if(!adm&&SHR[a])openPn(SHR[a]);else closeSh(true);
+  if(adm)closeDr();
 }
 addEventListener('hashchange',nav);
 auth.onAuthStateChanged(async u=>{
@@ -595,7 +680,8 @@ $('#sair').onclick=async()=>{await stopTx();await auth.signOut();location.hash='
 $('#ab').onclick=()=>$('.sb').classList.toggle('open');
 $$('[data-v],#sair').forEach(b=>b.addEventListener('click',()=>$('.sb').classList.remove('open')));
 $('#cBusca').onclick=async()=>{const b=$('#cBusca');b.textContent='Buscando...';cacheSt=null;const l=await loadStations(true);$('#cSt').value=l.map(x=>x.url+' | '+x.name).join('\n');b.textContent='Buscar rádios brasileiras'};
-$$('[data-v]').forEach(b=>b.onclick=()=>{$$('[data-v]').forEach(x=>x.classList.toggle('a',x===b));$$('[data-s]').forEach(s=>s.classList.toggle('hide',s.dataset.s!==b.dataset.v))});
+$$('[data-v]').forEach(b=>b.onclick=()=>{location.hash='#admin'+(AV[b.dataset.v]?'/'+AV[b.dataset.v]:'')});
+$$('[data-go]').forEach(b=>b.onclick=()=>location.hash='#admin/'+b.dataset.go);
 
 /* ---------- ADMIN: dados ---------- */
 let pf='pendente',prevP=null;
@@ -604,6 +690,7 @@ function startAdmin(){
   adminOn=true;
   $('#cNome').value=cfg.nome||'Gazeta FM';$('#cSub').value=cfg.sub||'Nacional Player';$('#cSlg').value=cfg.slogan||'';$('#cDc').value=cfg.discord||'';$('#cProg').value=cfg.prog||'';
   $('#cEq').value=cfg.equipe||'';$('#cTop').value=cfg.top||'';$('#cSt').value=lines(cfg.streams).filter(l=>!STREAMS_PADRAO.includes(l)).join('\n');
+  db.ref('private/webhook').once('value').then(x=>{whCfg=x.val()||{};$('#cWh').value=whCfg.url||'';$('#cWhAll').checked=!!whCfg.all}).catch(()=>{});
   R.child('pedidos').limitToLast(100).on('value',s=>{ped=s.val()||{};renderPed()});
   setInterval(renderOuv,30000);
 }
@@ -621,10 +708,27 @@ function renderPed(){
 }
 $('#pedL').onclick=e=>{const b=e.target.closest('[data-ps]');if(!b)return;const[k,s]=b.dataset.ps.split('|');s==='del'?R.child('pedidos/'+k).remove():R.child('pedidos/'+k+'/status').set(s)};
 $$('[data-pf]').forEach(b=>b.onclick=()=>{pf=b.dataset.pf;$$('[data-pf]').forEach(x=>x.classList.toggle('a',x===b));renderPed()});
+let whCfg={};
+const WH=/^https:\/\/(discord|discordapp)\.com\/api\/webhooks\/\d+\/[\w-]+/;
+const siteUrl=()=>location.origin+location.pathname;
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+async function sendWh(url,all,title,desc){const x=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:all?'@everyone':'',username:cfg.nome||'Gazeta FM',embeds:[{title,description:desc,color:0xe10613,timestamp:new Date().toISOString()}],allowed_mentions:{parse:all?['everyone']:[]}})});return x.ok}
+async function notifyLive(){const w=whCfg;if(!w||!w.url||!WH.test(w.url))return;try{await sendWh(w.url,w.all,'AO VIVO agora!','**'+($('#loc').value||'Locutor')+'** entrou ao vivo na '+(cfg.nome||'Gazeta FM')+' '+(cfg.sub||'Nacional Player')+'.\n\nOuça agora: '+siteUrl())}catch(e){}}
 $('#salvar').onclick=async()=>{
-  try{await R.child('config').set({nome:$('#cNome').value,sub:$('#cSub').value,slogan:$('#cSlg').value,discord:$('#cDc').value,prog:$('#cProg').value,equipe:$('#cEq').value,top:$('#cTop').value,streams:$('#cSt').value});$('#sok').textContent='Alterações salvas'}
-  catch(e){$('#sok').textContent='Não foi possível salvar. Verifique as regras do Firebase.'}
+  const wh=$('#cWh').value.trim();
+  if(wh&&!WH.test(wh)){toast('Webhook inválido. Ele começa com https://discord.com/api/webhooks/');return}
+  try{
+    await R.child('config').set({nome:$('#cNome').value,sub:$('#cSub').value,slogan:$('#cSlg').value,discord:$('#cDc').value,prog:$('#cProg').value,equipe:$('#cEq').value,top:$('#cTop').value,streams:$('#cSt').value});
+    await db.ref('private/webhook').set({url:wh,all:$('#cWhAll').checked});
+    whCfg={url:wh,all:$('#cWhAll').checked};toast('Alterações salvas');
+  }catch(e){toast('Não foi possível salvar. Verifique as regras do Firebase.')}
 };
+$('#whTest').onclick=async()=>{
+  const wh=$('#cWh').value.trim();if(!WH.test(wh)){toast('Cole um webhook válido primeiro');return}
+  try{toast(await sendWh(wh,false,'Teste de aviso','O aviso de transmissão ao vivo está funcionando.')?'Mensagem de teste enviada':'O Discord recusou o envio')}catch(e){toast('Não foi possível enviar o teste')}
+};
+$('#ver').href=$('#ver2').href=siteUrl();
+$('#cpLink').onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(siteUrl()):Promise.reject()).then(()=>toast('Link copiado'),()=>toast(siteUrl()))};
 
 /* ---------- ADMIN: áudio ---------- */
 let ctx,dest,master,musicBus,fxBus,micGain,micStream,decks,active=0,list=[],cur=-1,fxList=[],micOpen=false;
@@ -662,7 +766,26 @@ function playTrack(i){
   active=1-active;cur=i;renderPl();
   if(peer)R.child('recentes').push({nome:list[i].name,ts:Date.now()});
 }
-function nextTrack(){if(list.length)playTrack((cur+1)%list.length)}
+function nextTrack(){
+  if(!list.length)return;
+  if($('#shuf').checked&&list.length>1){let i;do{i=Math.floor(Math.random()*list.length)}while(i===cur);playTrack(i)}
+  else playTrack((cur+1)%list.length);
+}
+const fmtT=t=>{t=Math.floor(t||0);return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')};
+let seeking=false;
+function updPp(){const a=ctx&&decks&&decks[active].a;$('#pp').innerHTML=a&&cur>=0&&!a.paused?'<i class="fa-solid fa-pause"></i>':'<i class="fa-solid fa-play"></i>'}
+$('#pp').onclick=()=>{if(!list.length)return;if(cur<0){playTrack(0);return}const a=decks[active].a;a.paused?a.play():a.pause();updPp()};
+$('#prev').onclick=()=>{if(list.length)playTrack((cur-1+list.length)%list.length)};
+$('#pbar').oninput=e=>{seeking=true;const d=decks[active].a;if(d.duration)d.currentTime=e.target.value/1000*d.duration};
+$('#pbar').onchange=()=>seeking=false;
+$('#fxv').oninput=e=>{if(ctx)fxBus.gain.value=+e.target.value};
+let txStart=0;
+setInterval(()=>{
+  $('#txT').textContent=txStart?fmtT((Date.now()-txStart)/1000):'00:00';
+  const d=ctx&&decks&&decks[active].a;if(!d||cur<0)return;
+  $('#nowT').textContent=list[cur]?list[cur].name:'Nenhuma música';$('#tcur').textContent=fmtT(d.currentTime);$('#tdur').textContent=fmtT(d.duration);
+  if(!seeking&&d.duration)$('#pbar').value=d.currentTime/d.duration*1000;updPp();
+},400);
 $('#next').onclick=nextTrack;
 const duckF=()=>micOpen&&$('#duck').checked?.25:1;
 $('#mvol').oninput=e=>{if(ctx)musicBus.gain.setTargetAtTime(+e.target.value*duckF(),ctx.currentTime,.1)};
@@ -691,7 +814,7 @@ $('#tx').onclick=()=>{
   initAudio();peer=new Peer();
   peer.on('open',id=>{
     const sr=R.child('status');
-    sr.set({online:true,peer:id,locutor:$('#loc').value||'No ar',ts:Date.now()});
+    sr.set({online:true,peer:id,locutor:$('#loc').value||'No ar',ts:Date.now()});txStart=Date.now();notifyLive();
     sr.onDisconnect().set({online:false});
     $('#tx').classList.add('hide');$('#txStop').classList.remove('hide');
     if(navigator.wakeLock)navigator.wakeLock.request('screen').then(w=>wl=w).catch(()=>{});
@@ -704,7 +827,7 @@ async function stopTx(){
   if(!peer)return;
   calls.forEach(c=>c.close());calls.clear();cnt();
   try{await R.child('status').onDisconnect().cancel();await R.child('status').set({online:false})}catch(e){}
-  peer.destroy();peer=null;if(wl){wl.release();wl=null}
+  peer.destroy();peer=null;txStart=0;if(wl){wl.release();wl=null}
   $('#txStop').classList.add('hide');$('#tx').classList.remove('hide');
 }
 $('#txStop').onclick=stopTx;
@@ -714,5 +837,6 @@ $$('.ct,.g2>.box,.stats>div').forEach((e,i)=>{e.classList.add('rv');e.style.tran
 $('#yr').textContent=new Date().getFullYear();
 renderPl();renderFx();nav();
 </script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
